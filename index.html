@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Forge | PC Builder Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="grid-shell">
+    <header class="glass hero">
+      <div>
+        <p class="eyebrow">Personal PC Studio</p>
+        <h1>Design, compare, and orchestrate your dream rig.</h1>
+        <p class="lede">A futuristic workspace for planners who obsess over performance, cost, logistics, and the full lifecycle of every part.</p>
+        <div class="action-row">
+          <button id="add-build-btn" class="primary">Add a build</button>
+          <button id="brainstorm-btn" class="ghost">Brainstorm ideas</button>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span class="label">Active Builds</span>
+          <span id="build-count" class="value">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Orders in Flight</span>
+          <span id="order-count" class="value">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Return Rate</span>
+          <span id="return-rate" class="value">0%</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="glass" id="builds-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Planner</p>
+            <h2>Builds & cost clarity</h2>
+          </div>
+          <div class="inline-form">
+            <input id="build-name" type="text" placeholder="Build name" />
+            <input id="build-budget" type="number" placeholder="Budget" />
+            <input id="build-part" type="text" placeholder="Component & price (GPU $799)" />
+            <button id="save-build" class="primary">Save</button>
+          </div>
+        </div>
+        <div id="build-list" class="flex-list"></div>
+      </section>
+
+      <section class="glass" id="compare-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Decision lab</p>
+            <h2>Compare builds</h2>
+          </div>
+          <div class="inline-form">
+            <input id="compare-a" type="text" placeholder="Build name A" />
+            <input id="compare-b" type="text" placeholder="Build name B" />
+            <button id="run-compare" class="ghost">Compare</button>
+          </div>
+        </div>
+        <div id="compare-output" class="callout"></div>
+      </section>
+
+      <section class="glass" id="orders-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Logistics</p>
+            <h2>Orders & returns</h2>
+          </div>
+          <div class="inline-form">
+            <input id="order-build" type="text" placeholder="Build name" />
+            <input id="order-item" type="text" placeholder="Item" />
+            <input id="order-status" type="text" placeholder="Status (Processing)" />
+            <button id="add-order" class="primary">Track</button>
+          </div>
+        </div>
+        <div id="order-list" class="flex-list"></div>
+      </section>
+
+      <section class="glass" id="ideas-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Ideation</p>
+            <h2>Brainstorm & refine</h2>
+          </div>
+          <div class="inline-form">
+            <input id="idea-keyword" type="text" placeholder="Filter by keyword" />
+            <button id="filter-ideas" class="ghost">Filter</button>
+          </div>
+        </div>
+        <div id="idea-list" class="idea-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="build-card-template">
+    <article class="card build">
+      <header>
+        <div>
+          <p class="eyebrow">Build</p>
+          <h3 class="build-title"></h3>
+        </div>
+        <div class="budget">
+          <span class="label">Budget</span>
+          <span class="value budget-value"></span>
+        </div>
+      </header>
+      <ul class="parts"></ul>
+      <footer class="card-footer">
+        <div class="totals"></div>
+        <button class="secondary add-order-quick">Track order</button>
+      </footer>
+    </article>
+  </template>
+
+  <template id="order-row-template">
+    <article class="card order">
+      <div>
+        <p class="eyebrow order-build"></p>
+        <h4 class="order-item"></h4>
+      </div>
+      <div class="order-meta">
+        <span class="status"></span>
+        <button class="secondary mark-return">Return</button>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
